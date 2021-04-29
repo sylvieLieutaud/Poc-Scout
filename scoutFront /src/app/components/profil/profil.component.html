@@ -1,0 +1,33 @@
+<app-nav-bar></app-nav-bar>
+
+<mat-card class="container d-flex flex-column justify-content-around align-items-center">
+    <mat-card-title class="mt-5">MON PROFIL</mat-card-title>
+
+    <mat-card class="card mdc-card mdc-card--outlined mt-3" style="width: 90%">
+        <mat-card-header>
+            <mat-card-title>{{ user.firstName }} {{ user.lastName }} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>Crée le : {{ user.createdAt | date: 'medium': undefined : 'fr' }}</mat-card-content>
+        <mat-card-content>Modifiée le : {{ user.updatedAt | date: 'medium': undefined : 'fr' }}</mat-card-content>
+        <mat-card-content>
+            <mat-card class="card mdc-card mdc-card--outlined" style="width: 90%">
+                <mat-card-header>
+                    <mat-card-title> Organisme rattachement : </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>Nom d'organisme: {{ org.orgName }}</mat-card-content>
+                <mat-card-content>Ville d'organisme: {{ org.orgCity }}</mat-card-content>
+                <mat-card-content>Crée le : {{ org.createdAt | date: 'medium': undefined : 'fr'}}</mat-card-content>
+            </mat-card>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card-footer style="width: 90%" class="d-flex justify-content-around align-items-center mt-4 mb-1">
+    <button mat-raised-button class="" routerLink="/landingPage">
+        retour
+    </button>
+    
+    <button mat-raised-button class="" routerLink="/register">
+        Modifier mon profil
+    </button>
+    </mat-card-footer>
+</mat-card>

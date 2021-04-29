@@ -1,0 +1,32 @@
+<app-nav-bar></app-nav-bar>
+<mat-card class="container d-flex flex-column justify-content-around align-items-center">
+    <mat-card-title class="mt-5">CONFIGURATION DES PARAMETRES</mat-card-title>
+
+    <mat-card class="card mdc-card mdc-card--outlined mt-3" >
+    <mat-card-content class="d-flex flex-column">
+        <!-- <h2 class="example-h2">Image configuration</h2> -->
+        <ng-container class="example-section ">
+            <label style="font-size: 18px; font-style: italic;" class="example-margin mb-4"> Résolution photo:</label>
+            <mat-radio-group [(ngModel)]="resolution" class="d-flex flex-row justify-content-around">
+                <mat-radio-button class="example-margin" value="low">base(480x270 pixels) </mat-radio-button>
+                <mat-radio-button class="example-margin" value="middle">Moyenne(720x480 pixels) </mat-radio-button>
+                <mat-radio-button class="example-margin" value="high">Haute (1080x720 pixels) </mat-radio-button>
+            </mat-radio-group>
+        </ng-container>
+        <ng-container class="example-section">
+            <label style="font-size: 18px; font-style: italic;" class="example-margin mb-2 mt-4">Qualité photo : </label>
+            <mat-radio-group [(ngModel)]="quality"  class="d-flex flex-row justify-content-around">
+                <mat-radio-button class="example-margin" value="0.6">60%</mat-radio-button>
+                <mat-radio-button class="example-margin" value="0.8">80%</mat-radio-button>
+                <mat-radio-button class="example-margin" value="1">100%</mat-radio-button>
+            </mat-radio-group>
+        </ng-container>
+        <mat-card-footer class="d-flex flex-column justify-content-around align-items-center">
+        <button mat-raised-button class="mt-5 mb-5" (click)="goback()">
+            Valider et retour
+        </button>
+        </mat-card-footer>
+
+    </mat-card-content>
+</mat-card>
+</mat-card>

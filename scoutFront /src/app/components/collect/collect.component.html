@@ -1,0 +1,91 @@
+<app-nav-bar></app-nav-bar>
+
+<nav class="navbar navbar-light">
+  
+    <div class="container-fluid d-flex justify-content-center">
+
+    <span class="navbar-brand mb-0 h1" style="color :red;" *ngIf ="( !gpsUserX || !gpsUserY == null)">En attente de reception </span>
+    <span class="navbar-brand mb-0 h1" style="color :aqua;" *ngIf ="( gpsUserX && gpsUserY !== null)">Reception gps ok</span>
+    
+    <i class="material-icons md-36">near_me</i>
+  </div>
+</nav>
+
+<div class="dialog mt-3">
+  <p class="h1">Collect</p>
+  <!-- form for collect -->
+  <form [formGroup]="collectForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label> Text </mat-label>
+      <input matInput type="text" formControlName="text" (change)="saveText()" value ="vccccc" required />
+    </mat-form-field>
+
+    <!-- photo -->
+    <!-- <mat-form-field appearance="fill"> -->
+    <mat-card-content class="d-flex">
+      <mat-label> Photo </mat-label>
+      <div class="ml-3 d-flex flex-row flex-wrap">
+        <mat-grid *ngFor="let c of captures; let i = index">
+          <mat-card>
+            <img
+              src="{{ c.base64data }}"
+              style="height: 50px; width: 50px"
+              (click)="openDialogPhoto(i)"
+            />
+          </mat-card>
+        </mat-grid>
+      </div>
+      <span class="example-spacer"></span>
+      <i class="material-icons md-48" (click)="openDialogAdd()">add_a_photo</i>
+    </mat-card-content>
+    <!-- </mat-form-field> -->
+
+    <!-- audio -->
+    <mat-card-content class="d-flex">
+      <mat-label>Audio</mat-label>
+      <div class="ml-3 d-flex flex-row flex-wrap">
+       
+        <audio controls="" *ngIf="audioUrl">
+        <source [src]="sanitize(audioUrl.base64data)" type="audio/wav">
+        </audio>
+      </div>
+      <span class="example-spacer"></span>
+      <mat-label style="color:red;" *ngIf="(recording && audioUrl===null) "> Enregistrement en cours</mat-label>
+      <i class="material-icons md-48" (click)="initiateRecording()" *ngIf="(!recording && audioUrl===null) ">mic</i>
+      <i class="material-icons md-48" (click)="deleteRecording()" *ngIf="audioUrl!==null">delete</i>
+      <i class="material-icons md-48" (click)="stopRecording()" *ngIf="recording">mic_off</i>
+
+    </mat-card-content>
+
+    <!-- video -->
+    <mat-card-content class="d-flex">
+      <mat-label> Video </mat-label>
+      <div class="ml-3 d-flex flex-row flex-wrap" *ngIf = 'videoFiles !== null'>
+        <iframe [src]="videoFiles" style="height: 80px; width: 80px" ></iframe>
+        <i class="material-icons md-48" (click)="openDialogVideoRecorded()">zoom_in</i>
+      </div>
+      <span class="example-spacer"></span>
+      <i class="material-icons md-48" (click)="openDialogVideo()" *ngIf="videoFiles === null">videocam</i>
+      <i class="material-icons md-48" (click)="deleteVideo()" *ngIf="videoFiles !== null">delete</i>
+    </mat-card-content>
+
+    <!-- gps -->
+    <mat-card-content appearance="fill" class="d-flex">
+      <mat-label> GPS </mat-label>
+      <div class="ml-3 d-flex flex-row flex-wrap ">
+        <mat-label>lattitude : {{ gpsX | number : 0}} / longitude: {{ gpsY | number : 0}}</mat-label>
+        <!-- <input matInput type="text" formControlName="text" /> -->
+      </div>
+      <span class="example-spacer"></span>
+      <i class="material-icons md-48" (click)="openDialogMap()">gps_fixed</i>
+     
+    </mat-card-content>
+
+    <!-- footer -->
+    <div class="buttonbis d-flex justify-content-between">
+      <button mat-raised-button>Annuler</button>
+      <button mat-raised-button cdkFocusInitial>Valider</button>
+    </div>
+  
+  </form>
+</div>

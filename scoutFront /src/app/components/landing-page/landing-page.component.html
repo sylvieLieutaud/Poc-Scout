@@ -1,0 +1,29 @@
+<app-nav-bar></app-nav-bar>
+
+<mat-card
+  class="container d-flex flex-column justify-content-around align-items-center"
+>
+  <mat-card-title class="mt-5">MES VISITES</mat-card-title>
+  <mat-card-subtitle class="align-self-center mt-5" *ngIf="visitNull===true"> Vous n'avez pas encore de visite enregistée. Vous pouvez en créer en appuiant sur le bouton + !</mat-card-subtitle>
+  <mat-content appearance="outline"
+    *ngFor="let visit of obs | async"
+    (click) ="redirect(visit.id)"
+    class="container d-flex flex-column justify-content-around align-items-center mt-3"
+  >
+
+    <mat-card id="card-hover"
+    class="card mdc-card mdc-card--outlined" style="width: 90%">
+      <mat-card-header>
+        <mat-card-title>{{ visit.visitName }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>Crée le : {{ visit.createdAt | date: 'medium': undefined : 'fr' }}</mat-card-content>
+      <mat-card-content>Modifiée le : {{ visit.updatedAt | date: 'medium': undefined : 'fr' }}</mat-card-content>
+    </mat-card>
+  </mat-content>
+  <!-- pagination for data -->
+  <mat-paginator *ngIf="visitNull===false" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <a class="align-self-end mt-5 mr-5" routerLink="/createVisit">
+    <mat-icon style="font-size: 4rem">add_circle</mat-icon>
+  </a>
+  
+</mat-card>

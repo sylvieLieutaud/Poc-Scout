@@ -1,0 +1,92 @@
+<app-nav-bar *ngIf="userLogin!==null"></app-nav-bar>
+
+<mat-card class="container d-flex flex-column justify-content-around align-items-center">
+  <mat-card-title class="mt-5 mb-3" >{{title}}</mat-card-title>
+  <mat-card-subtitle class="mt-5" *ngIf='userLogin===null' ><a routerLink="/login" > Déjà inscrit? Login </a></mat-card-subtitle>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"
+    class="container d-flex flex-column justify-content-around align-items-center">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput type="text" formControlName="lastName" [ngClass]="registerForm.controls['lastName'].invalid ? 'is-invalid' : ''"  required/>
+      <mat-hint align="end" *ngIf="!lastNameInput.value">Enter your Name</mat-hint>
+      <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Prénom</mat-label>
+      <input matInput type="text" formControlName="firstName" required/>
+      <mat-hint align="end" *ngIf="!firstNameInput.value">Enter your FirstName</mat-hint>
+      <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="text" formControlName="email" required/>
+      <mat-hint align="end" *ngIf="!emailInput.value">Enter your email</mat-hint>
+      <mat-error *ngIf="registerForm.controls['email'].hasError('required')">required</mat-error>
+      <mat-error *ngIf="registerForm.controls['email'].hasError('email')">not an email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" type="password" formControlName="password" [class.has-danger]="registerForm.invalid" required/>
+      <mat-hint align="end" *ngIf="!passwordInput.value">Enter your password</mat-hint>
+      <mat-error *ngIf="registerForm.controls['password'].hasError('required')">required</mat-error>
+      <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Confirmer mot de passe</mat-label>
+      <input matInput [type]="hideToo ? 'password' : 'text'" type="password" formControlName="confirmPassword" required/>
+      <mat-hint align="end" *ngIf="!confirmPasswordInput.value">Confirm your password
+      </mat-hint>
+      
+      <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">required</mat-error>
+      
+      <mat-hint class="form-control-feedback" *ngIf="registerForm.invalid">
+      <mat-error *ngIf="registerForm.hasError('mismatch')">Passwords are mismatched.</mat-error>
+      </mat-hint>
+        
+      <mat-icon matSuffix (click)="hideToo = !hideToo" [attr.aria-label]="'hideToo password'"
+        [attr.aria-pressed]="hideToo">
+        <mat-icon>{{hideToo ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-icon>
+    </mat-form-field>
+
+  </form>
+
+  <mat-card-subtitle class="mt-5">Organisme de rattachement</mat-card-subtitle>
+
+  <form [formGroup]="orgForm" (ngSubmit)="onSubmit()"
+    class="container d-flex flex-column justify-content-around align-items-center">
+
+    <mat-form-field>
+      <mat-label>Organisme</mat-label>
+      <input matInput type="text" formControlName="orgName" required/>
+      <mat-hint align="end" *ngIf="!orgNameInput.value">Enter your organisation</mat-hint>
+      <mat-error *ngIf="orgForm.controls['orgName'].hasError('required')">required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ville de l'Organisme</mat-label>
+      <input matInput type="text" formControlName="orgCity" required />
+      <mat-hint align="end" *ngIf="!orgCityInput.value">Enter organisation's city</mat-hint>
+      <mat-error *ngIf="orgForm.controls['orgCity'].hasError('required')">required</mat-error>
+    </mat-form-field>
+
+    <div class="input-group mt-4">
+      <button class="btn btn-lg btn-block mt-5" type="submit" [disabled]="!registerForm.valid"
+        [disabled]="!orgForm.valid" *ngIf="userLogin===null">
+        Valider
+      </button>
+      <button class="btn btn-lg btn-block mt-5" type="submit" [disabled]="!registerForm.valid"
+        [disabled]="!orgForm.valid" *ngIf="userLogin!==null">
+        Modifer
+      </button>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,23 @@
+<!-- show webcam -->
+<div  *ngIf='data.index !== "replay"'>
+    <div *ngIf = 'recorded !== true '><video #video id="video" style="width:100%; height:100%" autoplay></video></div>
+        <!-- show recorded video  -->
+        <video *ngFor="let video of videoFiles" controls='true' [src]="video"></video>
+        <div class="button d-flex justify-content-between">
+        <i class="material-icons md-48" (click)="retour()">cancel</i>
+        <span class="example-spacer"></span>
+        <i class="material-icons md-48" *ngIf = '(recording !== true && recorded !== true)' (click)="startRecording()">check_circle</i>
+        <i class="material-icons md-48" *ngIf = '(recording === true && recorded !== true)' (click)="stopRecording()">stop</i>
+        <i class="material-icons md-48" *ngIf = 'recorded == true' (click)="removeVideo()">delete</i>
+    </div>
+</div>
+<!-- if a existing video  -->
+<div *ngIf='data.index == "replay"'>
+    <iframe *ngIf = 'data.index === "replay"' [src]="videoFiles" style="width:100%; height:100%" ></iframe>
+    <div class="button d-flex justify-content-between">
+        <i class="material-icons md-48" (click)="retour()">cancel</i>
+        <span class="example-spacer"></span>
+        <i class="material-icons md-48" (click)="removeVideo()">delete</i>
+
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+  
+  }
+  
+  div, mat-form-field{
+    width:100%;
+    justify-content:center;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  button{
+    background-color: var(--teal);
+  }
+  

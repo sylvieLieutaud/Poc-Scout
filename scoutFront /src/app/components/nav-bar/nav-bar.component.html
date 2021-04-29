@@ -1,0 +1,26 @@
+<mat-toolbar>
+
+  <a mat-button (click)="goback()" *ngIf="router.url !== '/landingPage'">
+    <i class="material-icons md-48">arrow_back</i>
+  </a>
+  <span class="example-spacer"></span>
+  <div mat-card-avatar class="example-header-image"></div>
+  <mat-card-title *ngIf="userId!== null"> {{userLogin.firstName}} {{userLogin.lastName}}</mat-card-title>
+  <span class="example-spacer"></span>
+  <a mat-button [matMenuTriggerFor]="menu">
+    <i class="material-icons md-48">menu</i>
+  </a>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button mat-menu-item routerLink="/profil">Mon Profil</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/landingPage">Ma liste des visites</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/myListCase">Ma Liste d'Affaires</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/params">Paramètres</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="/about">A Propos de CEREMA</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()" >Logout</button>
+  </mat-menu>
+</mat-toolbar>

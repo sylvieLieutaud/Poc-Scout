@@ -1,0 +1,17 @@
+<div class="dialog">
+  <h1 mat-dialog-title>Edit l'affaire </h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="fill">
+        <mat-label>Nom de L'affaire </mat-label>
+        <input matInput [(ngModel)]="data.caseName">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Numéro de l'affaire</mat-label>
+        <input matInput [(ngModel)]="data.caseNumber">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Valider</button>
+</div>
+</div>

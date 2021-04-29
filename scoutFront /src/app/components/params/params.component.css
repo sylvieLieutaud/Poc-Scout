@@ -1,0 +1,22 @@
+/* .example-h2 {
+    margin: 10px;
+  }
+  
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 50%
+    }
+  
+  .example-margin {
+    margin: 0 50px;
+  } */
+  
+mat-card{ 
+  width: 90%;
+}
+
+button{
+  background-color: var(--teal);
+}

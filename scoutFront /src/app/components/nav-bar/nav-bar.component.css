@@ -1,0 +1,31 @@
+/* @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+.nav{
+ background-color: var(--teal);   
+}
+
+.dropdown-toggle::after {
+  display:none;
+}
+
+.dropdownmenu{
+background-color: lightgray;
+} */
+
+.example-spacer {
+  flex: 1 1 auto;
+}  
+
+mat-toolbar{
+  background-color: var(--teal);   
+ }
+a{
+   color: white;
+ }
+ .example-header-image {
+  background-image: url('src/assets/logo/cerema.png');
+  background-size: cover;
+}
+ .material-icons.md-36 { font-size: 36px; }
+ .material-icons.md-48 { font-size: 48px; } 
+ .material-icons.md-60 { font-size: 60px; } 
+

@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* root fait reférence à lelement root de la page html et ici c'est html */
+:root {
+    /* --font-family est une variable reutilisable dans tout le code 
+    représentant : font-family: var(--font-family) */
+    --font-family: 'Yusei Magic', sans-serif;
+    --teal: #20c997;
+    --secondary: #778beb;
+    --accent: #c44569;
+    --lightgray: #ddd;
+    --text-regular: #444;
+   }
+    
+   body {
+    font-family: var(--font-family);
+    color: var(--text-regular);
+   }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Rules for sizing the icon. */
+.md-18 { font-size: 18px; }
+.md-24 { font-size: 24px; }
+.md-36 { font-size: 36px; }
+.md-48 { font-size: 48px; }
+
+
+.cdk-overlay-pane.my-dialog {
+    position: relative!important;
+  }
+  

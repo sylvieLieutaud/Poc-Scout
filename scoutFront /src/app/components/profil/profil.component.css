@@ -1,0 +1,7 @@
+.mat-raised-button{
+  background-color: var(--teal);
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}  

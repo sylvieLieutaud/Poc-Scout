@@ -1,0 +1,15 @@
+
+.example-spacer {
+    flex: 1 1 auto;
+  
+}
+
+
+
+.material-icons{ 
+    color: var(--teal);
+}
+
+.mat-raised-button{
+    background-color: var(--teal);
+}

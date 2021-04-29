@@ -1,0 +1,26 @@
+/* Structure */
+table{
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 90%;
+}
+td.mat-cell, th.mat-header-cell {
+  text-align: center;
+  justify-content:center;
+}
+
+mat-icon {
+  color: var(--teal);   
+ }
+
+ mat-card{
+   width:90%;
+   margin : auto;
+ }
+
+ a{
+   float: right;
+ }

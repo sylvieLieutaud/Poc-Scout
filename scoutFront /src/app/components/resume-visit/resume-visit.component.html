@@ -1,0 +1,47 @@
+<app-nav-bar></app-nav-bar>
+
+<mat-card
+  class="container d-flex flex-column justify-content-around align-items-center"
+>
+  <mat-card-title class="mt-5 mb-3"> RESUME DE LA VISITE </mat-card-title>
+
+    <mat-card class="card mdc-card mdc-card--outlined" style="width: 90%">
+        <mat-card-header>
+            <mat-card-title>Nom de la visite : {{ visit.visitName }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>Crée le : {{ visit.createdAt | date: 'medium': undefined : 'fr' }}</mat-card-content>
+        <mat-card-content>Modifiée le : {{ visit.updatedAt | date: 'medium': undefined : 'fr' }}</mat-card-content>
+        <mat-card-content>
+            <mat-card class="card mdc-card mdc-card--outlined" style="width: 90%">
+                <mat-card-header>
+                    <mat-card-title> Affaire concernée : </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>Nom d'affaire:  {{ case.caseName }}</mat-card-content>
+                <mat-card-content>Numero d'affaire: {{ case.caseNumber }}</mat-card-content>
+                <mat-card-content>Crée le : {{ case.createdAt | date: 'medium': undefined : 'fr' }}</mat-card-content>
+            </mat-card>
+        </mat-card-content>
+    </mat-card>
+<!-- </mat-content> -->
+<div class="container d-flex justify-content-around w-75 mt-3">
+    <!-- export -->
+    
+        <button routerLink="/" mat-button disabled>
+            <i class="material-icons" style="font-size: 3rem">file_download</i>
+        </button>
+    
+    <span class="example-spacer"></span>
+    <!-- delete -->
+    <button mat-button disabled (click)="delete(visit.id)">
+        <i class="material-icons" style="font-size: 3rem">delete</i>
+    </button>
+</div>
+<!-- begin a collect of visit -->
+<button mat-raised-button class="btn btn-lg btn-block  mt-3" *ngIf="button==='show'" routerLink="/collect/{{visit.id}}">
+    Démarrer la visite
+</button>
+<!-- continue collect of visit -->
+<button mat-raised-button class="btn btn-lg btn-block mt-3" *ngIf="button!=='show'" routerLink="/collect/{{visit.id}}">
+    Continuer la visite
+</button>
+</mat-card>

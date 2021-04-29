@@ -1,0 +1,14 @@
+#card-hover {
+   background-color: #FFFFFF;
+}
+
+#card-hover:hover { 
+  background-color: var(--teal); 
+}
+
+mat-icon {
+  color: var(--teal);   
+ }
+
+
+

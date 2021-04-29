@@ -1,0 +1,11 @@
+
+.btn{
+    background-color: var(--teal);   
+   }
+
+mat-form-field{
+    width:100%;
+}
+form{ 
+    width:100%;
+}

@@ -1,0 +1,36 @@
+.mapcss{
+  height: 100%;
+  width: 100%;
+}
+
+#mapid{
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+}
+
+.material-icons.md-48 {
+  position: absolute;
+  z-index: 3;
+  bottom: 0px;
+  left: 0px;
+  display: fixed;
+  min-width: auto;
+  color: var(--teal);
+}
+
+
+/* .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(100%, -100%);
+    background:red;
+    padding: 5px;
+    line-height: 14px;
+    min-width: auto;
+  } */
+
+  /* my-div-icon{
+    src: url('leaflet/dist/images/marker-icon.png');
+  } */
